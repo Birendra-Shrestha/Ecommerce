@@ -1,0 +1,85 @@
+<style>
+    .carousel-item img {
+        height: 500px;
+    }
+
+    .card-img {
+        overflow: hidden;
+    }
+
+    .card-img:hover img {
+        transform: scale(1.5);
+    }
+
+    .card-img img {
+        transition: all 2s;
+    }
+</style>
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>E-commerce - Homepage</title>
+{% endblock %}
+
+
+{% block main_content %}
+<!-- carousel start -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://ecommercegermany.com/wp-content/uploads/2022/04/7ways_to_improve-536x411.webp"
+                class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://st.depositphotos.com/1395715/4172/v/600/depositphotos_41725103-stock-illustration-flat-design-vector-illustration-e.jpg"
+                class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://www.areinfotech.com/it-company/advantage-of-e-commerce.png" class="d-block w-100"
+                alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- carousel end -->
+
+<!-- card start -->
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-4 g-4 mt-5">
+        {% for product in products %}
+        <div class="col">
+            <div class="card shadow-lg">
+                <div class="card-img">
+                    <img src="/{{product.image}}" class="card-img-top" alt="{{product.product_name}}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.product_name}}</h5>
+                    <h5 class="card-title">Rs.{{product.product_price}}</h5>
+                    <a href="#" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- card end -->
+
+
+{% endblock %}
